@@ -20,30 +20,49 @@ namespace WindowsFormsApp1
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            float n1 = float.Parse(n1add.Text);
-            float n2 = float.Parse(n2add.Text);
-            addResult.Text = calc.AddNumbers(n1, n2).ToString();
+            if (TryGetFloatValues(n1add.Text, n2add.Text, out float float1, out float float2))
+            {
+                addResult.Text = calc.AddNumbers(float1, float2).ToString();
+            }
         }
 
         private void subBtn_Click(object sender, EventArgs e)
         {
-            float n1 = float.Parse(n1sub.Text);
-            float n2 = float.Parse(n2sub.Text);
-            subResult.Text = calc.SubstractNumbers(n1, n2).ToString();
+            if (TryGetFloatValues(n1sub.Text, n2sub.Text, out float float1, out float float2))
+            {
+                subResult.Text = calc.SubstractNumbers(float1, float2).ToString();
+            }
         }
 
         private void divBtn_Click(object sender, EventArgs e)
         {
-            float n1 = float.Parse(n1div.Text);
-            float n2 = float.Parse(n2div.Text);
-            divResult.Text = calc.DivideNumbers(n1, n2).ToString();
+            if (TryGetFloatValues(n1div.Text, n2div.Text, out float float1, out float float2))
+            {
+                divResult.Text = calc.DivideNumbers(float1, float2).ToString();
+            }
         }
 
         private void multBtn_Click(object sender, EventArgs e)
         {
-            float n1 = float.Parse(n1mult.Text);
-            float n2 = float.Parse(n2mult.Text);
-            multResult.Text = calc.MultiplyNumbers(n1, n2).ToString();
+            if (TryGetFloatValues(n1mult.Text, n2mult.Text, out float float1, out float float2))
+            {
+                multResult.Text = calc.MultiplyNumbers(float1, float2).ToString();
+            }
+            
+        }
+        private bool TryGetFloatValues(string input1, string input2, out float result1, out float result2)
+        {
+            result1 = result2 = 0;
+
+            if (float.TryParse(input1, out result1) && float.TryParse(input2, out result2))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Both inputs should be valid float or integer numbers.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
         }
     }
 }
