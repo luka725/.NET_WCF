@@ -3,7 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalcService", "CalcService\CalcService.csproj", "{04004D72-B391-4488-8187-D649AF979707}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorForms", "WindowsFormsApp1\CalculatorForms.csproj", "{08879E7D-0D29-46A1-8807-94E4884C733E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{04004D72-B391-4488-8187-D649AF979707} = {04004D72-B391-4488-8187-D649AF979707}
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04004D72-B391-4488-8187-D649AF979707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04004D72-B391-4488-8187-D649AF979707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04004D72-B391-4488-8187-D649AF979707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04004D72-B391-4488-8187-D649AF979707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08879E7D-0D29-46A1-8807-94E4884C733E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08879E7D-0D29-46A1-8807-94E4884C733E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08879E7D-0D29-46A1-8807-94E4884C733E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08879E7D-0D29-46A1-8807-94E4884C733E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
