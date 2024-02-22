@@ -14,5 +14,11 @@ namespace CalcService
     {
         [OperationContract]
         float AddNumbers(float n1, float n2);
+        [OperationContract]
+        float SubstractNumbers(float n1, float n2);
+        [OperationContract]
+        float DivideNumbers(float n1, float n2);
+        [OperationContract]
+        float MultiplyNumbers(float n1, float n2);
     }
 }

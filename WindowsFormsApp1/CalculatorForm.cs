@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class CalculatorForm : Form
     {
+        public CalculatorServiceReference.Service1Client calc = new CalculatorServiceReference.Service1Client();
         public CalculatorForm()
         {
             InitializeComponent();
@@ -19,10 +20,30 @@ namespace WindowsFormsApp1
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            ServiceReference1.Service1Client calc = new ServiceReference1.Service1Client();
             float n1 = float.Parse(n1add.Text);
             float n2 = float.Parse(n2add.Text);
             addResult.Text = calc.AddNumbers(n1, n2).ToString();
+        }
+
+        private void subBtn_Click(object sender, EventArgs e)
+        {
+            float n1 = float.Parse(n1sub.Text);
+            float n2 = float.Parse(n2sub.Text);
+            subResult.Text = calc.SubstractNumbers(n1, n2).ToString();
+        }
+
+        private void divBtn_Click(object sender, EventArgs e)
+        {
+            float n1 = float.Parse(n1div.Text);
+            float n2 = float.Parse(n2div.Text);
+            divResult.Text = calc.DivideNumbers(n1, n2).ToString();
+        }
+
+        private void multBtn_Click(object sender, EventArgs e)
+        {
+            float n1 = float.Parse(n1mult.Text);
+            float n2 = float.Parse(n2mult.Text);
+            multResult.Text = calc.MultiplyNumbers(n1, n2).ToString();
         }
     }
 }

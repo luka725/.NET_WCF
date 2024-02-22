@@ -16,5 +16,17 @@ namespace CalcService
         {
             return n1 + n2;
         }
+        public float SubstractNumbers(float n1, float n2)
+        {
+            return n1 - n2;
+        }
+        public float DivideNumbers(float n1, float n2)
+        {
+            return n1 / n2;
+        }
+        public float MultiplyNumbers(float n1, float n2)
+        {
+            return n1 * n2;
+        }
     }
 }
