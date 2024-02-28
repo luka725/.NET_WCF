@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:49308/Foundamental.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:49308/Foundamental.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:49308/Foundamental.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/FoundamentClassLib" />
+      <xsd:import schemaLocation="http://localhost:49308/Foundamental.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfFoundamentalService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IFoundamental_GetAllPerson_InputMessage">
@@ -13,11 +13,11 @@
   <wsdl:message name="IFoundamental_GetAllPerson_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPersonResponse" />
   </wsdl:message>
-  <wsdl:message name="IFoundamental_AddStudent_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddStudent" />
+  <wsdl:message name="IFoundamental_AddPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPerson" />
   </wsdl:message>
-  <wsdl:message name="IFoundamental_AddStudent_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddStudentResponse" />
+  <wsdl:message name="IFoundamental_AddPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPersonResponse" />
   </wsdl:message>
   <wsdl:message name="IFoundamental_DeletePersonById_InputMessage">
     <wsdl:part name="parameters" element="tns:DeletePersonById" />
@@ -25,18 +25,28 @@
   <wsdl:message name="IFoundamental_DeletePersonById_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletePersonByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IFoundamental_GetPersonById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonById" />
+  </wsdl:message>
+  <wsdl:message name="IFoundamental_GetPersonById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFoundamental">
     <wsdl:operation name="GetAllPerson">
       <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/GetAllPerson" message="tns:IFoundamental_GetAllPerson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/GetAllPersonResponse" message="tns:IFoundamental_GetAllPerson_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddStudent">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/AddStudent" message="tns:IFoundamental_AddStudent_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/AddStudentResponse" message="tns:IFoundamental_AddStudent_OutputMessage" />
+    <wsdl:operation name="AddPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/AddPerson" message="tns:IFoundamental_AddPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/AddPersonResponse" message="tns:IFoundamental_AddPerson_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeletePersonById">
       <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/DeletePersonById" message="tns:IFoundamental_DeletePersonById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/DeletePersonByIdResponse" message="tns:IFoundamental_DeletePersonById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/GetPersonById" message="tns:IFoundamental_GetPersonById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/GetPersonByIdResponse" message="tns:IFoundamental_GetPersonById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFoundamental" type="tns:IFoundamental">
@@ -50,8 +60,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddStudent">
-      <soap:operation soapAction="http://tempuri.org/IFoundamental/AddStudent" style="document" />
+    <wsdl:operation name="AddPerson">
+      <soap:operation soapAction="http://tempuri.org/IFoundamental/AddPerson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -61,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeletePersonById">
       <soap:operation soapAction="http://tempuri.org/IFoundamental/DeletePersonById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonById">
+      <soap:operation soapAction="http://tempuri.org/IFoundamental/GetPersonById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

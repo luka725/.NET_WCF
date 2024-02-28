@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoundamentClassLib
+namespace FoundamentalClassLib
 {
-    public class LibClass
+    public class Class1
     {
     }
 }

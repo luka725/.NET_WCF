@@ -91,9 +91,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FoundamentClassLib\FoundamentClassLib.csproj">
-      <Project>{80edec9b-5ee9-44a7-805a-2d87a32b4572}</Project>
-      <Name>FoundamentClassLib</Name>
+    <ProjectReference Include="..\FoundamentalClassLib\FoundamentalClassLib.csproj">
+      <Project>{b9d74d9d-ee73-4405-adcf-ef4f927c92cd}</Project>
+      <Name>FoundamentalClassLib</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

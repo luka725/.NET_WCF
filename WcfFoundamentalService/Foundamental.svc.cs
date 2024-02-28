@@ -1,7 +1,8 @@
-﻿using FoundamentClassLib;
+﻿using FoundamentalClassLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
@@ -10,31 +11,77 @@ namespace WcfFoundamentalService
 {
     public class Foundamental : IFoundamental
     {
-        public List<Person> GetAllPerson()
+        public PersonData GetPersonById(int personId)
         {
-            using (var dbContext = new FoundamentalModel())
+            using (var dbContext = new FoundamentalDataModel())
             {
-                return dbContext.Persons.ToList();
+                var person = dbContext.Persons.FirstOrDefault(p => p.Id == personId);
+
+                if (person != null)
+                {
+                    return new PersonData
+                    {
+                        Id = person.Id,
+                        FirstName = person.FirstName,
+                        LastName = person.LastName,
+                        PersonalId = person.PersonalId,
+                        Email = person.Email
+                    };
+                }
+                return null;
             }
         }
-        public void AddPerson(string Fname, string Lname, string Pid, string Email)
+        public List<PersonData> GetAllPerson()
         {
-            using (var dbContext = new FoundamentalModel())
+            using (var dbContext = new FoundamentalDataModel())
             {
-                Person newPerson = new Person
+                List<Person> persons = dbContext.Persons.ToList();
+
+                List<PersonData> personDataList = persons.Select(p => new PersonData
                 {
-                    FirstName = Fname,
-                    LastName = Lname,
-                    PersonalId = Pid,
-                    Email = Email
-                };
-                dbContext.Persons.Add(newPerson);
+                    Id = p.Id,
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    PersonalId = p.PersonalId,
+                    Email = p.Email
+                }).ToList();
+
+                return personDataList;
+            }
+        }
+        public void AddPerson(PersonData NewPerson)
+        {
+            using (var dbContext = new FoundamentalDataModel())
+            {
+                if (NewPerson.Id != 0)
+                {
+                    Person existingPerson = dbContext.Persons.Find(NewPerson.Id);
+
+                    if (existingPerson != null)
+                    {
+                        existingPerson.FirstName = NewPerson.FirstName;
+                        existingPerson.LastName = NewPerson.LastName;
+                        existingPerson.PersonalId = NewPerson.PersonalId;
+                        existingPerson.Email = NewPerson.Email;
+                    }
+                }
+                else
+                {
+                    Person newPerson = new Person
+                    {
+                        FirstName = NewPerson.FirstName,
+                        LastName = NewPerson.LastName,
+                        PersonalId = NewPerson.PersonalId,
+                        Email = NewPerson.Email
+                    };
+                    dbContext.Persons.Add(newPerson);
+                }
                 dbContext.SaveChanges();
             }
         }
         public void DeletePersonById(int personId)
         {
-            using (var dbContext = new FoundamentalModel())
+            using (var dbContext = new FoundamentalDataModel())
             {
                 var personToDelete = dbContext.Persons.Find(personId);
 
@@ -45,6 +92,5 @@ namespace WcfFoundamentalService
                 }
             }
         }
-
     }
 }

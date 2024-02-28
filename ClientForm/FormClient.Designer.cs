@@ -37,7 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.AddUpdateLabel = new System.Windows.Forms.Label();
             this.CmbPersons = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.UpdateBtn = new System.Windows.Forms.Button();
@@ -122,14 +122,14 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Email:";
             // 
-            // label6
+            // AddUpdateLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Add New Person";
+            this.AddUpdateLabel.AutoSize = true;
+            this.AddUpdateLabel.Location = new System.Drawing.Point(9, 9);
+            this.AddUpdateLabel.Name = "AddUpdateLabel";
+            this.AddUpdateLabel.Size = new System.Drawing.Size(87, 13);
+            this.AddUpdateLabel.TabIndex = 10;
+            this.AddUpdateLabel.Text = "Add New Person";
             // 
             // CmbPersons
             // 
@@ -156,6 +156,7 @@
             this.UpdateBtn.TabIndex = 13;
             this.UpdateBtn.Text = "Update";
             this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // DeleteBtn
             // 
@@ -206,7 +207,7 @@
             this.Controls.Add(this.UpdateBtn);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.CmbPersons);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.AddUpdateLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -235,7 +236,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label AddUpdateLabel;
         private System.Windows.Forms.ComboBox CmbPersons;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button UpdateBtn;

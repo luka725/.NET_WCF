@@ -1,4 +1,4 @@
-namespace FoundamentClassLib
+namespace FoundamentalClassLib
 {
     using System;
     using System.Collections.Generic;

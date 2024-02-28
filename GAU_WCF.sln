@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientForm", "ClientForm\Cl
 		{625257AE-E882-47F2-A13E-9ECBE9ADECF2} = {625257AE-E882-47F2-A13E-9ECBE9ADECF2}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoundamentClassLib", "FoundamentClassLib\FoundamentClassLib.csproj", "{80EDEC9B-5EE9-44A7-805A-2D87A32B4572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoundamentalClassLib", "FoundamentalClassLib\FoundamentalClassLib.csproj", "{B9D74D9D-EE73-4405-ADCF-EF4F927C92CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +26,10 @@ Global
 		{A4B1E2AE-3F5B-43B7-8DB7-3ABE004F4E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4B1E2AE-3F5B-43B7-8DB7-3ABE004F4E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4B1E2AE-3F5B-43B7-8DB7-3ABE004F4E13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80EDEC9B-5EE9-44A7-805A-2D87A32B4572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80EDEC9B-5EE9-44A7-805A-2D87A32B4572}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80EDEC9B-5EE9-44A7-805A-2D87A32B4572}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80EDEC9B-5EE9-44A7-805A-2D87A32B4572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D74D9D-EE73-4405-ADCF-EF4F927C92CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D74D9D-EE73-4405-ADCF-EF4F927C92CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D74D9D-EE73-4405-ADCF-EF4F927C92CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D74D9D-EE73-4405-ADCF-EF4F927C92CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

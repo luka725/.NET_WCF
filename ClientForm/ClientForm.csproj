@@ -73,7 +73,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\FoundamentalServiceReference\ClientForm.FoundamentalServiceReference.Person.datasource">
+    <None Include="Connected Services\FoundamentalServiceReference\ClientForm.FoundamentalServiceReference.PersonData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\FoundamentalServiceReference\Foundamental.wsdl" />

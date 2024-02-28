@@ -1,4 +1,4 @@
-namespace FoundamentClassLib
+namespace FoundamentalClassLib
 {
     using System;
     using System.Collections.Generic;
@@ -9,31 +9,18 @@ namespace FoundamentClassLib
     [Table("Persons")]
     public partial class Person
     {
-        [Key]
-        [Column(Order = 0)]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         [StringLength(50)]
         public string FirstName { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
         [StringLength(50)]
         public string LastName { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
-        [StringLength(11)]
+        [StringLength(20)]
         public string PersonalId { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Email { get; set; }
-
-        [NotMapped]
-        public string FullName => $"{FirstName} {LastName}";
     }
 }

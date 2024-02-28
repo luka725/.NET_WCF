@@ -15,9 +15,9 @@ namespace ClientForm.FoundamentalServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/FoundamentClassLib")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PersonData", Namespace="http://schemas.datacontract.org/2004/07/WcfFoundamentalService")]
     [System.SerializableAttribute()]
-    public partial class Person : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class PersonData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -29,7 +29,10 @@ namespace ClientForm.FoundamentalServiceReference {
         private string FirstNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IDField;
+        private string FullNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastNameField;
@@ -74,14 +77,27 @@ namespace ClientForm.FoundamentalServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID {
+        public string FullName {
             get {
-                return this.IDField;
+                return this.FullNameField;
             }
             set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
+                if ((object.ReferenceEquals(this.FullNameField, value) != true)) {
+                    this.FullNameField = value;
+                    this.RaisePropertyChanged("FullName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -127,22 +143,28 @@ namespace ClientForm.FoundamentalServiceReference {
     public interface IFoundamental {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/GetAllPerson", ReplyAction="http://tempuri.org/IFoundamental/GetAllPersonResponse")]
-        ClientForm.FoundamentalServiceReference.Person[] GetAllPerson();
+        ClientForm.FoundamentalServiceReference.PersonData[] GetAllPerson();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/GetAllPerson", ReplyAction="http://tempuri.org/IFoundamental/GetAllPersonResponse")]
-        System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.Person[]> GetAllPersonAsync();
+        System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.PersonData[]> GetAllPersonAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/AddStudent", ReplyAction="http://tempuri.org/IFoundamental/AddStudentResponse")]
-        void AddStudent(string Fname, string Lname, string Pid, string Email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/AddPerson", ReplyAction="http://tempuri.org/IFoundamental/AddPersonResponse")]
+        void AddPerson(ClientForm.FoundamentalServiceReference.PersonData NewPerson);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/AddStudent", ReplyAction="http://tempuri.org/IFoundamental/AddStudentResponse")]
-        System.Threading.Tasks.Task AddStudentAsync(string Fname, string Lname, string Pid, string Email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/AddPerson", ReplyAction="http://tempuri.org/IFoundamental/AddPersonResponse")]
+        System.Threading.Tasks.Task AddPersonAsync(ClientForm.FoundamentalServiceReference.PersonData NewPerson);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/DeletePersonById", ReplyAction="http://tempuri.org/IFoundamental/DeletePersonByIdResponse")]
         void DeletePersonById(int personId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/DeletePersonById", ReplyAction="http://tempuri.org/IFoundamental/DeletePersonByIdResponse")]
         System.Threading.Tasks.Task DeletePersonByIdAsync(int personId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/GetPersonById", ReplyAction="http://tempuri.org/IFoundamental/GetPersonByIdResponse")]
+        ClientForm.FoundamentalServiceReference.PersonData GetPersonById(int personId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/GetPersonById", ReplyAction="http://tempuri.org/IFoundamental/GetPersonByIdResponse")]
+        System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.PersonData> GetPersonByIdAsync(int personId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -172,20 +194,20 @@ namespace ClientForm.FoundamentalServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public ClientForm.FoundamentalServiceReference.Person[] GetAllPerson() {
+        public ClientForm.FoundamentalServiceReference.PersonData[] GetAllPerson() {
             return base.Channel.GetAllPerson();
         }
         
-        public System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.Person[]> GetAllPersonAsync() {
+        public System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.PersonData[]> GetAllPersonAsync() {
             return base.Channel.GetAllPersonAsync();
         }
         
-        public void AddStudent(string Fname, string Lname, string Pid, string Email) {
-            base.Channel.AddStudent(Fname, Lname, Pid, Email);
+        public void AddPerson(ClientForm.FoundamentalServiceReference.PersonData NewPerson) {
+            base.Channel.AddPerson(NewPerson);
         }
         
-        public System.Threading.Tasks.Task AddStudentAsync(string Fname, string Lname, string Pid, string Email) {
-            return base.Channel.AddStudentAsync(Fname, Lname, Pid, Email);
+        public System.Threading.Tasks.Task AddPersonAsync(ClientForm.FoundamentalServiceReference.PersonData NewPerson) {
+            return base.Channel.AddPersonAsync(NewPerson);
         }
         
         public void DeletePersonById(int personId) {
@@ -194,6 +216,14 @@ namespace ClientForm.FoundamentalServiceReference {
         
         public System.Threading.Tasks.Task DeletePersonByIdAsync(int personId) {
             return base.Channel.DeletePersonByIdAsync(personId);
+        }
+        
+        public ClientForm.FoundamentalServiceReference.PersonData GetPersonById(int personId) {
+            return base.Channel.GetPersonById(personId);
+        }
+        
+        public System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.PersonData> GetPersonByIdAsync(int personId) {
+            return base.Channel.GetPersonByIdAsync(personId);
         }
     }
 }

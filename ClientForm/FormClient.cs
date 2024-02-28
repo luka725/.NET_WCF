@@ -14,16 +14,54 @@ namespace ClientForm
 {
     public partial class FormClient : Form
     {
-        private FoundamentalClient Service;
+        private FoundamentalClient client;
+        private int Uid;
         public FormClient()
         {
             InitializeComponent();
         }
         private void FormClient_Load(object sender, EventArgs e)
         {
-            Service = new FoundamentalClient();
+            client = new FoundamentalClient();
             PopulateGridViewByPersons();
             PopulateCmbByPersons();
+        }
+        private void PopulateGridViewByPersons()
+        {
+            DgvPersons.DataSource = null;
+            var persons = client.GetAllPerson();
+            DgvPersons.DataSource = persons;
+        }
+        private void PopulateCmbByPersons()
+        {
+            CmbPersons.DataSource = null;
+            var persons = client.GetAllPerson();
+            CmbPersons.DisplayMember = "FirstName";
+            CmbPersons.ValueMember = "Id";
+            CmbPersons.DataSource = persons;
+        }
+        private void RefreshBtn_Click(object sender, EventArgs e)
+        {
+            PopulateGridViewByPersons();
+        }
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (CmbPersons.SelectedItem != null)
+            {
+                var selectedPerson = (PersonData)CmbPersons.SelectedItem;
+                DialogResult result = MessageBox.Show($"Are you sure you want to delete {selectedPerson.FirstName}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    client.DeletePersonById(selectedPerson.Id);
+                    PopulateGridViewByPersons();
+                    PopulateCmbByPersons();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a person to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void InsertBtn_Click(object sender, EventArgs e)
         {
@@ -37,46 +75,57 @@ namespace ClientForm
                 !string.IsNullOrEmpty(personalId) &&
                 !string.IsNullOrEmpty(email))
             {
-                Service.AddStudent(firstName, lastName, personalId, email);
-                MessageBox.Show("Person added successfully!");
+                var NewPerson = new PersonData
+                {
+                    Id = Uid,
+                    FirstName = firstName,
+                    LastName = lastName,
+                    PersonalId = personalId,
+                    Email = email
+                };
+
+                client.AddPerson(NewPerson);
+                PopulateGridViewByPersons();
+                PopulateCmbByPersons();
+                if(Uid != 0)
+                {
+                    MessageBox.Show($"Person {firstName} {lastName} Updated successfully!");
+                }
+                else
+                {
+                    MessageBox.Show($"Person {firstName} {lastName} added successfully!");
+                }
+                
+                Uid = 0;
+                InsertBtn.Text = "Add";
+                Fname.Text = string.Empty;
+                Lname.Text = string.Empty;
+                Pid.Text = string.Empty;
+                Email.Text = string.Empty;
+                AddUpdateLabel.Text = "Add New Person";
             }
             else
             {
                 MessageBox.Show("The one of the field is empty!");
             }
         }
-        private void PopulateGridViewByPersons()
+        private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            var persons = Service.GetAllPerson();
-            DgvPersons.DataSource = persons;
-        }
-        private void PopulateCmbByPersons()
-        {
-            var persons = Service.GetAllPerson();
-            CmbPersons.DisplayMember = "FirstName";
-            CmbPersons.ValueMember = "ID";
-            CmbPersons.DataSource = persons;
-        }
-        private void RefreshBtn_Click(object sender, EventArgs e)
-        {
-            PopulateGridViewByPersons();
-        }
-        private void DeleteBtn_Click(object sender, EventArgs e)
-        {
-            if (CmbPersons.SelectedItem != null)
+            if (CmbPersons.SelectedItem  != null)
             {
-                var selectedPerson = (Person)CmbPersons.SelectedItem;
-                DialogResult result = MessageBox.Show($"Are you sure you want to delete {selectedPerson.FirstName}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                PersonData selectedPerson = (PersonData)CmbPersons.SelectedItem;
+                if (selectedPerson != null)
                 {
-                    Service.DeletePersonById(selectedPerson.ID);
-                    PopulateCmbByPersons();
+                    Uid = selectedPerson.Id;
+                    Fname.Text = selectedPerson.FirstName;
+                    Lname.Text = selectedPerson.LastName;
+                    Email.Text = selectedPerson.Email;
+                    Pid.Text = selectedPerson.PersonalId;
+
+                    AddUpdateLabel.Text = $"Update Person: {Fname.Text} {Lname.Text}";
+                    InsertBtn.Text = "Update";
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please select a person to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
         }
     }
