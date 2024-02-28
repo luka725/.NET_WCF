@@ -12,11 +12,39 @@ namespace WcfFoundamentalService
     {
         public List<Person> GetAllPerson()
         {
-            using (var db = new FoundamentalModel())
+            using (var dbContext = new FoundamentalModel())
             {
-                var persons = db.Persons.ToList();
-                return persons;
+                return dbContext.Persons.ToList();
             }
         }
+        public void AddPerson(string Fname, string Lname, string Pid, string Email)
+        {
+            using (var dbContext = new FoundamentalModel())
+            {
+                Person newPerson = new Person
+                {
+                    FirstName = Fname,
+                    LastName = Lname,
+                    PersonalId = Pid,
+                    Email = Email
+                };
+                dbContext.Persons.Add(newPerson);
+                dbContext.SaveChanges();
+            }
+        }
+        public void DeletePersonById(int personId)
+        {
+            using (var dbContext = new FoundamentalModel())
+            {
+                var personToDelete = dbContext.Persons.Find(personId);
+
+                if (personToDelete != null)
+                {
+                    dbContext.Persons.Remove(personToDelete);
+                    dbContext.SaveChanges();
+                }
+            }
+        }
+
     }
 }

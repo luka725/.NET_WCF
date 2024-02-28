@@ -13,5 +13,10 @@ namespace WcfFoundamentalService
     {
         [OperationContract]
         List<Person> GetAllPerson();
+
+        [OperationContract]
+        void AddPerson(string Fname, string Lname, string Pid, string Email);
+        [OperationContract]
+        void DeletePersonById(int personId);
     }
 }

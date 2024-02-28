@@ -13,16 +13,54 @@
   <wsdl:message name="IFoundamental_GetAllPerson_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPersonResponse" />
   </wsdl:message>
+  <wsdl:message name="IFoundamental_AddStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddStudent" />
+  </wsdl:message>
+  <wsdl:message name="IFoundamental_AddStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFoundamental_DeletePersonById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePersonById" />
+  </wsdl:message>
+  <wsdl:message name="IFoundamental_DeletePersonById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePersonByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFoundamental">
     <wsdl:operation name="GetAllPerson">
       <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/GetAllPerson" message="tns:IFoundamental_GetAllPerson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/GetAllPersonResponse" message="tns:IFoundamental_GetAllPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/AddStudent" message="tns:IFoundamental_AddStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/AddStudentResponse" message="tns:IFoundamental_AddStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePersonById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/DeletePersonById" message="tns:IFoundamental_DeletePersonById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/DeletePersonByIdResponse" message="tns:IFoundamental_DeletePersonById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFoundamental" type="tns:IFoundamental">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllPerson">
       <soap:operation soapAction="http://tempuri.org/IFoundamental/GetAllPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStudent">
+      <soap:operation soapAction="http://tempuri.org/IFoundamental/AddStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePersonById">
+      <soap:operation soapAction="http://tempuri.org/IFoundamental/DeletePersonById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

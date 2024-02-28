@@ -131,6 +131,18 @@ namespace ClientForm.FoundamentalServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/GetAllPerson", ReplyAction="http://tempuri.org/IFoundamental/GetAllPersonResponse")]
         System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.Person[]> GetAllPersonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/AddStudent", ReplyAction="http://tempuri.org/IFoundamental/AddStudentResponse")]
+        void AddStudent(string Fname, string Lname, string Pid, string Email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/AddStudent", ReplyAction="http://tempuri.org/IFoundamental/AddStudentResponse")]
+        System.Threading.Tasks.Task AddStudentAsync(string Fname, string Lname, string Pid, string Email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/DeletePersonById", ReplyAction="http://tempuri.org/IFoundamental/DeletePersonByIdResponse")]
+        void DeletePersonById(int personId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/DeletePersonById", ReplyAction="http://tempuri.org/IFoundamental/DeletePersonByIdResponse")]
+        System.Threading.Tasks.Task DeletePersonByIdAsync(int personId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -166,6 +178,22 @@ namespace ClientForm.FoundamentalServiceReference {
         
         public System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.Person[]> GetAllPersonAsync() {
             return base.Channel.GetAllPersonAsync();
+        }
+        
+        public void AddStudent(string Fname, string Lname, string Pid, string Email) {
+            base.Channel.AddStudent(Fname, Lname, Pid, Email);
+        }
+        
+        public System.Threading.Tasks.Task AddStudentAsync(string Fname, string Lname, string Pid, string Email) {
+            return base.Channel.AddStudentAsync(Fname, Lname, Pid, Email);
+        }
+        
+        public void DeletePersonById(int personId) {
+            base.Channel.DeletePersonById(personId);
+        }
+        
+        public System.Threading.Tasks.Task DeletePersonByIdAsync(int personId) {
+            return base.Channel.DeletePersonByIdAsync(personId);
         }
     }
 }

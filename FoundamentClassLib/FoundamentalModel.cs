@@ -18,6 +18,11 @@ namespace FoundamentClassLib
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Person>()
+                .Property(e => e.ID)
+                .HasColumnName("ID")
+                .IsRequired();
+
+            modelBuilder.Entity<Person>()
                 .Property(e => e.FirstName)
                 .IsUnicode(false);
 
@@ -32,6 +37,7 @@ namespace FoundamentClassLib
             modelBuilder.Entity<Person>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
+
         }
     }
 }

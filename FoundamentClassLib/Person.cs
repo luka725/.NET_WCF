@@ -32,5 +32,8 @@ namespace FoundamentClassLib
         [Column(Order = 4)]
         [StringLength(50)]
         public string Email { get; set; }
+
+        [NotMapped]
+        public string FullName => $"{FirstName} {LastName}";
     }
 }
