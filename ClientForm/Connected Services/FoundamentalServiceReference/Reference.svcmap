@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="35cfcb39-1c54-40db-ab23-f22cdca59656" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49308/Foundamental.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Foundamental.xsd" MetadataType="Schema" ID="06c60a65-5967-450d-bcad-c9e14939739e" SourceId="1" SourceUrl="http://localhost:49308/Foundamental.svc?xsd=xsd2" />
+    <MetadataFile FileName="Foundamental1.xsd" MetadataType="Schema" ID="bbd7101c-385a-4693-b536-923b7cfe70de" SourceId="1" SourceUrl="http://localhost:49308/Foundamental.svc?xsd=xsd1" />
+    <MetadataFile FileName="Foundamental.wsdl" MetadataType="Wsdl" ID="4daf7d76-0c76-4e74-be17-60842fbb4073" SourceId="1" SourceUrl="http://localhost:49308/Foundamental.svc?wsdl" />
+    <MetadataFile FileName="Foundamental.disco" MetadataType="Disco" ID="d51c4b46-c2a2-4509-b545-f4ca939090c8" SourceId="1" SourceUrl="http://localhost:49308/Foundamental.svc?disco" />
+    <MetadataFile FileName="Foundamental2.xsd" MetadataType="Schema" ID="70f1b1aa-dd7a-4ee4-ab0c-0f25324cbd03" SourceId="1" SourceUrl="http://localhost:49308/Foundamental.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
