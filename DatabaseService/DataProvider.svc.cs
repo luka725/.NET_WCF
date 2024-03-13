@@ -10,14 +10,14 @@ namespace DatabaseService
 {
     public class DataProvider : IDataProvider
     {
-        public Customer GetCustomer()
+        public Customer GetCustomerById(int customerId = 0)
         {
             using (var dbContext = new DatabaseModel())
             {
-                int customerIdToRetrieve = 1;
+                customerId = 1;
 
                 var customer = dbContext.Customers
-                                        .FirstOrDefault(c => c.CustomerID == customerIdToRetrieve);
+                                        .FirstOrDefault(c => c.CustomerID == customerId);
 
                 return customer;
             }

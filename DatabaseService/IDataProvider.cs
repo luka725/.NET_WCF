@@ -12,6 +12,6 @@ namespace DatabaseService
     public interface IDataProvider
     {
         [OperationContract]
-        Customer GetCustomer();
+        Customer GetCustomerById(int customerId);
     }
 }
