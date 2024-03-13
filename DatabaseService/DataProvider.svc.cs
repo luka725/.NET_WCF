@@ -1,4 +1,6 @@
 ﻿using ClassLibraryDatabase;
+using DatabaseService.Common;
+using DatabaseService.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace DatabaseService
 {
     public class DataProvider : IDataProvider
     {
-        public Customer GetCustomerById(int customerId = 0)
+        public CustomerDTO GetCustomerById(int customerId = 0)
         {
             using (var dbContext = new DatabaseModel())
             {
@@ -19,7 +21,7 @@ namespace DatabaseService
                 var customer = dbContext.Customers
                                         .FirstOrDefault(c => c.CustomerID == customerId);
 
-                return customer;
+                return AutoMapperConfig.Mapper.Map<CustomerDTO>(customer);
             }
         }
     }

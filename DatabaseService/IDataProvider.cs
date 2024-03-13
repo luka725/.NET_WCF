@@ -1,4 +1,5 @@
 ﻿using ClassLibraryDatabase;
+using DatabaseService.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,6 @@ namespace DatabaseService
     public interface IDataProvider
     {
         [OperationContract]
-        Customer GetCustomerById(int customerId);
+        CustomerDTO GetCustomerById(int customerId);
     }
 }
