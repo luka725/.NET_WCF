@@ -13,10 +13,7 @@ namespace WcfFoundamentalService.MapperConfig
         [Obsolete]
         public static void Configure()
         {
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Person, Models.PersonData>();
-            });
+
         }
     }
 }
