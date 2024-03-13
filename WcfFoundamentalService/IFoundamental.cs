@@ -5,28 +5,10 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfFoundamentalService.Models;
 
 namespace WcfFoundamentalService
 {
-    [DataContract]
-    public class PersonData
-    {
-        [DataMember]
-        public int Id { get; set; }
-
-        [DataMember]
-        public string FirstName { get; set; }
-
-        [DataMember]
-        public string LastName { get; set; }
-
-        [DataMember]
-        public string PersonalId { get; set; }
-
-        [DataMember]
-        public string Email { get; set; }
-    }
-
     [ServiceContract]
     public interface IFoundamental
     {

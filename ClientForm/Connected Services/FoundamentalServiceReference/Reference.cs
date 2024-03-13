@@ -15,7 +15,7 @@ namespace ClientForm.FoundamentalServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PersonData", Namespace="http://schemas.datacontract.org/2004/07/WcfFoundamentalService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PersonData", Namespace="http://schemas.datacontract.org/2004/07/WcfFoundamentalService.Models")]
     [System.SerializableAttribute()]
     public partial class PersonData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         

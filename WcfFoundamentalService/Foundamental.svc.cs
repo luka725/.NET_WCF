@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfFoundamentalService.Models;
 
 namespace WcfFoundamentalService
 {
@@ -42,6 +43,7 @@ namespace WcfFoundamentalService
                     Id = p.Id,
                     FirstName = p.FirstName,
                     LastName = p.LastName,
+                    FullName = p.FirstName + " " + p.LastName,
                     PersonalId = p.PersonalId,
                     Email = p.Email
                 }).ToList();
