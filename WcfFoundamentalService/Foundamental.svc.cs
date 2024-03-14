@@ -6,12 +6,14 @@ using System.Runtime.Remoting.Contexts;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WcfFoundamentalService.Common;
+using WcfFoundamentalService.DataContracts;
 
 namespace WcfFoundamentalService
 {
     public class Foundamental : IFoundamental
     {
-        public PersonData GetPersonById(int personId)
+        public PersonDTO GetPersonById(int personId)
         {
             using (var dbContext = new FoundamentalDataModel())
             {
@@ -19,37 +21,20 @@ namespace WcfFoundamentalService
 
                 if (person != null)
                 {
-                    return new PersonData
-                    {
-                        Id = person.Id,
-                        FirstName = person.FirstName,
-                        LastName = person.LastName,
-                        PersonalId = person.PersonalId,
-                        Email = person.Email
-                    };
+                    return AutoMapperConfig.Mapper.Map<PersonDTO>(person);
                 }
                 return null;
             }
         }
-        public List<PersonData> GetAllPerson()
+        public List<PersonDTO> GetAllPerson()
         {
             using (var dbContext = new FoundamentalDataModel())
             {
-                List<Person> persons = dbContext.Persons.ToList();
-
-                List<PersonData> personDataList = persons.Select(p => new PersonData
-                {
-                    Id = p.Id,
-                    FirstName = p.FirstName,
-                    LastName = p.LastName,
-                    PersonalId = p.PersonalId,
-                    Email = p.Email
-                }).ToList();
-
-                return personDataList;
+                var persons = dbContext.Persons.ToList();
+                return persons.Select(p => AutoMapperConfig.Mapper.Map<PersonDTO>(p)).ToList();
             }
         }
-        public void AddPerson(PersonData NewPerson)
+        public void AddPerson(PersonDTO NewPerson)
         {
             using (var dbContext = new FoundamentalDataModel())
             {
@@ -59,22 +44,12 @@ namespace WcfFoundamentalService
 
                     if (existingPerson != null)
                     {
-                        existingPerson.FirstName = NewPerson.FirstName;
-                        existingPerson.LastName = NewPerson.LastName;
-                        existingPerson.PersonalId = NewPerson.PersonalId;
-                        existingPerson.Email = NewPerson.Email;
+                        AutoMapperConfig.Mapper.Map(NewPerson, existingPerson);
                     }
                 }
                 else
                 {
-                    Person newPerson = new Person
-                    {
-                        FirstName = NewPerson.FirstName,
-                        LastName = NewPerson.LastName,
-                        PersonalId = NewPerson.PersonalId,
-                        Email = NewPerson.Email
-                    };
-                    dbContext.Persons.Add(newPerson);
+                    dbContext.Persons.Add(AutoMapperConfig.Mapper.Map<Person>(NewPerson));
                 }
                 dbContext.SaveChanges();
             }

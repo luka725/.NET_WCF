@@ -48,7 +48,7 @@ namespace ClientForm
         {
             if (CmbPersons.SelectedItem != null)
             {
-                var selectedPerson = (PersonData)CmbPersons.SelectedItem;
+                var selectedPerson = (PersonDTO)CmbPersons.SelectedItem;
                 DialogResult result = MessageBox.Show($"Are you sure you want to delete {selectedPerson.FirstName}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
@@ -75,7 +75,7 @@ namespace ClientForm
                 !string.IsNullOrEmpty(personalId) &&
                 !string.IsNullOrEmpty(email))
             {
-                var NewPerson = new PersonData
+                var NewPerson = new PersonDTO
                 {
                     Id = Uid,
                     FirstName = firstName,
@@ -83,7 +83,6 @@ namespace ClientForm
                     PersonalId = personalId,
                     Email = email
                 };
-
                 client.AddPerson(NewPerson);
                 PopulateGridViewByPersons();
                 PopulateCmbByPersons();
@@ -113,7 +112,7 @@ namespace ClientForm
         {
             if (CmbPersons.SelectedItem  != null)
             {
-                PersonData selectedPerson = (PersonData)CmbPersons.SelectedItem;
+                PersonDTO selectedPerson = (PersonDTO)CmbPersons.SelectedItem;
                 if (selectedPerson != null)
                 {
                     Uid = selectedPerson.Id;
