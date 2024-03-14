@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryDatabase", "ClassLibraryDatabase\ClassLibraryDatabase.csproj", "{23C46792-0BCE-443E-9C74-DD7BC1E8DC52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{52510729-5EC8-4201-A46D-44217A62BD86}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5A81E63A-3785-4848-A735-B80D78C97065} = {5A81E63A-3785-4848-A735-B80D78C97065}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

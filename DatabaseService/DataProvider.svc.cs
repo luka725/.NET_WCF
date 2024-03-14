@@ -24,5 +24,19 @@ namespace DatabaseService
                 return AutoMapperConfig.Mapper.Map<CustomerDTO>(customer);
             }
         }
+        public CustomerDTO[] GetCustomers(int pageNumber = 1)
+        {
+            using (var dbContext = new DatabaseModel())
+            {
+                int pageSize = 20;
+
+                var customers = dbContext.Customers
+                              .OrderBy(c => c.CustomerID)
+                              .Skip((pageNumber - 1) * pageSize)
+                              .Take(pageSize)
+                              .ToList();
+                return AutoMapperConfig.Mapper.Map<CustomerDTO[]>(customers);
+            }
+        }
     }
 }

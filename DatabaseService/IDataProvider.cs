@@ -14,5 +14,7 @@ namespace DatabaseService
     {
         [OperationContract]
         CustomerDTO GetCustomerById(int customerId);
+        [OperationContract]
+        CustomerDTO[] GetCustomers(int pageNumber); 
     }
 }
