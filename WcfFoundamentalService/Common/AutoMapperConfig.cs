@@ -16,7 +16,8 @@ namespace WcfFoundamentalService.Common
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Person, PersonDTO>();
+                cfg.CreateMap<Person, PersonDTO>()
+                    .ForMember(pdto => pdto.FullName, p => p.MapFrom(src => src.FirstName + " " + src.LastName));
                 cfg.CreateMap<PersonDTO, Person>();
             });
             _mapper = config.CreateMapper();

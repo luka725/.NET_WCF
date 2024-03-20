@@ -36,7 +36,7 @@ namespace ClientForm
         {
             CmbPersons.DataSource = null;
             var persons = client.GetAllPerson();
-            CmbPersons.DisplayMember = "FirstName";
+            CmbPersons.DisplayMember = "FullName";
             CmbPersons.ValueMember = "Id";
             CmbPersons.DataSource = persons;
         }
