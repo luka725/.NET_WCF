@@ -154,6 +154,12 @@ namespace ClientForm.FoundamentalServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/AddPerson", ReplyAction="http://tempuri.org/IFoundamental/AddPersonResponse")]
         System.Threading.Tasks.Task AddPersonAsync(ClientForm.FoundamentalServiceReference.PersonDTO NewPerson);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/UpdatePerson", ReplyAction="http://tempuri.org/IFoundamental/UpdatePersonResponse")]
+        void UpdatePerson(ClientForm.FoundamentalServiceReference.PersonDTO NewPerson);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/UpdatePerson", ReplyAction="http://tempuri.org/IFoundamental/UpdatePersonResponse")]
+        System.Threading.Tasks.Task UpdatePersonAsync(ClientForm.FoundamentalServiceReference.PersonDTO NewPerson);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/DeletePersonById", ReplyAction="http://tempuri.org/IFoundamental/DeletePersonByIdResponse")]
         void DeletePersonById(int personId);
         
@@ -208,6 +214,14 @@ namespace ClientForm.FoundamentalServiceReference {
         
         public System.Threading.Tasks.Task AddPersonAsync(ClientForm.FoundamentalServiceReference.PersonDTO NewPerson) {
             return base.Channel.AddPersonAsync(NewPerson);
+        }
+        
+        public void UpdatePerson(ClientForm.FoundamentalServiceReference.PersonDTO NewPerson) {
+            base.Channel.UpdatePerson(NewPerson);
+        }
+        
+        public System.Threading.Tasks.Task UpdatePersonAsync(ClientForm.FoundamentalServiceReference.PersonDTO NewPerson) {
+            return base.Channel.UpdatePersonAsync(NewPerson);
         }
         
         public void DeletePersonById(int personId) {

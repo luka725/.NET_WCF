@@ -38,6 +38,14 @@ namespace WcfFoundamentalService
         {
             using (var dbContext = new FoundamentalDataModel())
             {
+                dbContext.Persons.Add(AutoMapperConfig.Mapper.Map<Person>(NewPerson));
+                dbContext.SaveChanges();
+            }
+        }
+        public void UpdatePerson(PersonDTO NewPerson)
+        {
+            using (var dbContext = new FoundamentalDataModel())
+            {
                 if (NewPerson.Id != 0)
                 {
                     Person existingPerson = dbContext.Persons.Find(NewPerson.Id);
@@ -46,10 +54,6 @@ namespace WcfFoundamentalService
                     {
                         AutoMapperConfig.Mapper.Map(NewPerson, existingPerson);
                     }
-                }
-                else
-                {
-                    dbContext.Persons.Add(AutoMapperConfig.Mapper.Map<Person>(NewPerson));
                 }
                 dbContext.SaveChanges();
             }

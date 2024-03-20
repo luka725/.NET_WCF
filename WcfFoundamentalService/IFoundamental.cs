@@ -17,7 +17,10 @@ namespace WcfFoundamentalService
 
         [OperationContract]
         void AddPerson(PersonDTO NewPerson);
-        
+
+        [OperationContract]
+        void UpdatePerson(PersonDTO NewPerson);
+
         [OperationContract]
         void DeletePersonById(int personId);
 

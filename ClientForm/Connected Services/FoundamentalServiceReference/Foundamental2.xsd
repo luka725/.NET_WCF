@@ -25,6 +25,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdatePerson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfFoundamentalService.DataContracts" minOccurs="0" name="NewPerson" nillable="true" type="q3:PersonDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePersonResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DeletePersonById">
     <xs:complexType>
       <xs:sequence>
@@ -47,7 +59,7 @@
   <xs:element name="GetPersonByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfFoundamentalService.DataContracts" minOccurs="0" name="GetPersonByIdResult" nillable="true" type="q3:PersonDTO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfFoundamentalService.DataContracts" minOccurs="0" name="GetPersonByIdResult" nillable="true" type="q4:PersonDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

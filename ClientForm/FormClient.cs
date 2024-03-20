@@ -77,7 +77,14 @@ namespace ClientForm
                     PersonalId = personalId,
                     Email = email
                 };
-                client.AddPerson(NewPerson);
+                if(InsertBtn.Text == "Update")
+                {
+                    client.UpdatePerson(NewPerson);
+                }
+                else
+                {
+                    client.AddPerson(NewPerson);
+                }
                 PopulateDgvAndCmbByPersons();
                 if(Uid != 0)
                 {
