@@ -23,26 +23,21 @@ namespace ClientForm
         private void FormClient_Load(object sender, EventArgs e)
         {
             client = new FoundamentalClient();
-            PopulateGridViewByPersons();
-            PopulateCmbByPersons();
+            PopulateDgvAndCmbByPersons();
         }
-        private void PopulateGridViewByPersons()
+        private void PopulateDgvAndCmbByPersons()
         {
+            var persons = client.GetAllPerson();
             DgvPersons.DataSource = null;
-            var persons = client.GetAllPerson();
-            DgvPersons.DataSource = persons;
-        }
-        private void PopulateCmbByPersons()
-        {
             CmbPersons.DataSource = null;
-            var persons = client.GetAllPerson();
+            DgvPersons.DataSource = persons;
             CmbPersons.DisplayMember = "FullName";
             CmbPersons.ValueMember = "Id";
             CmbPersons.DataSource = persons;
         }
         private void RefreshBtn_Click(object sender, EventArgs e)
         {
-            PopulateGridViewByPersons();
+            PopulateDgvAndCmbByPersons();
         }
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
@@ -54,8 +49,7 @@ namespace ClientForm
                 if (result == DialogResult.Yes)
                 {
                     client.DeletePersonById(selectedPerson.Id);
-                    PopulateGridViewByPersons();
-                    PopulateCmbByPersons();
+                    PopulateDgvAndCmbByPersons();
                 }
             }
             else
@@ -84,8 +78,7 @@ namespace ClientForm
                     Email = email
                 };
                 client.AddPerson(NewPerson);
-                PopulateGridViewByPersons();
-                PopulateCmbByPersons();
+                PopulateDgvAndCmbByPersons();
                 if(Uid != 0)
                 {
                     MessageBox.Show($"Person {firstName} {lastName} Updated successfully!");
