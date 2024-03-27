@@ -8,6 +8,9 @@ using System.ServiceModel;
 using System.Text;
 using WcfFoundamentalService.Common;
 using WcfFoundamentalService.DataContracts;
+using System.Transactions;
+using System.Messaging;
+
 
 namespace WcfFoundamentalService
 {
@@ -36,10 +39,30 @@ namespace WcfFoundamentalService
         }
         public void AddPerson(PersonDTO NewPerson)
         {
-            using (var dbContext = new FoundamentalDataModel())
+            try
             {
-                dbContext.Persons.Add(AutoMapperConfig.Mapper.Map<Person>(NewPerson));
-                dbContext.SaveChanges();
+                using (var scope = new TransactionScope())
+                {
+                    using (var dbContext = new FoundamentalDataModel())
+                    {
+                        var existingPerson = dbContext.Persons.FirstOrDefault(p => p.Email == NewPerson.Email);
+                        if (existingPerson == null)
+                        {
+                            dbContext.Persons.Add(AutoMapperConfig.Mapper.Map<Person>(NewPerson));
+                            dbContext.SaveChanges();
+                            SendMessageToClient("Person inserted successfully.");
+                            scope.Complete();
+                        }
+                        else
+                        {
+                            SendMessageToClient("Person with the provided email already exists. Rolling back transaction.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                SendMessageToClient("An error occurred: " + ex.Message);
             }
         }
         public void UpdatePerson(PersonDTO NewPerson)
@@ -70,6 +93,11 @@ namespace WcfFoundamentalService
                     dbContext.SaveChanges();
                 }
             }
+        }
+        public void SendMessageToClient(string message)
+        {
+            MessageQueue messageQueue = new MessageQueue(@".\Private$\MyQueue");
+            messageQueue.Send(message);
         }
     }
 }

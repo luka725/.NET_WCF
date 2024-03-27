@@ -26,5 +26,8 @@ namespace WcfFoundamentalService
 
         [OperationContract]
         PersonDTO GetPersonById(int personId);
+
+        [OperationContract]
+        void SendMessageToClient(string message);
     }
 }

@@ -9,11 +9,18 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Messaging;
+using System.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.ServiceModel.Channels;
 
 namespace ClientForm
 {
     public partial class FormClient : Form
     {
+        private MessageQueue messageQueue;
+        private Thread messageListenerThread;
+        private bool isListening;
         private FoundamentalClient client;
         private int Uid;
         public FormClient()
@@ -24,6 +31,44 @@ namespace ClientForm
         {
             client = new FoundamentalClient();
             PopulateDgvAndCmbByPersons();
+            messageQueue = new MessageQueue(@".\Private$\MyQueue");
+            StartListening();
+        }
+        public void StartListening()
+        {
+            isListening = true;
+            messageListenerThread = new Thread(ListenForMessages);
+            messageListenerThread.IsBackground = true;
+            messageListenerThread.Start();
+        }
+        public void StopListening()
+        {
+            isListening = false;
+            messageListenerThread.Join();
+        }
+        private void ListenForMessages()
+        {
+            while (isListening)
+            {
+                try
+                {
+                    System.Messaging.Message message = messageQueue.Receive();
+                    string messageBody = message.Body.ToString();
+                    ProcessMessage(messageBody);
+                }
+                catch (MessageQueueException ex)
+                {
+                    Console.WriteLine($"Error receiving message from queue: {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+            }
+        }
+        private void ProcessMessage(string message)
+        {
+            MessageBox.Show($"Received message: {message}");
         }
         private void PopulateDgvAndCmbByPersons()
         {
@@ -92,7 +137,7 @@ namespace ClientForm
                 }
                 else
                 {
-                    MessageBox.Show($"Person {firstName} {lastName} added successfully!");
+                   MessageBox.Show($"Person {firstName} {lastName} added successfully!");
                 }
                 
                 Uid = 0;
