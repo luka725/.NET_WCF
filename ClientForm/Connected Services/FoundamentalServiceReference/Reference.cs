@@ -171,6 +171,12 @@ namespace ClientForm.FoundamentalServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/GetPersonById", ReplyAction="http://tempuri.org/IFoundamental/GetPersonByIdResponse")]
         System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.PersonDTO> GetPersonByIdAsync(int personId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/SendMessageToClient", ReplyAction="http://tempuri.org/IFoundamental/SendMessageToClientResponse")]
+        void SendMessageToClient(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFoundamental/SendMessageToClient", ReplyAction="http://tempuri.org/IFoundamental/SendMessageToClientResponse")]
+        System.Threading.Tasks.Task SendMessageToClientAsync(string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -238,6 +244,14 @@ namespace ClientForm.FoundamentalServiceReference {
         
         public System.Threading.Tasks.Task<ClientForm.FoundamentalServiceReference.PersonDTO> GetPersonByIdAsync(int personId) {
             return base.Channel.GetPersonByIdAsync(personId);
+        }
+        
+        public void SendMessageToClient(string message) {
+            base.Channel.SendMessageToClient(message);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageToClientAsync(string message) {
+            return base.Channel.SendMessageToClientAsync(message);
         }
     }
 }

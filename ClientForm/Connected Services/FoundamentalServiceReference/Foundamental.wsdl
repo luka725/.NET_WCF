@@ -37,6 +37,12 @@
   <wsdl:message name="IFoundamental_GetPersonById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPersonByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IFoundamental_SendMessageToClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageToClient" />
+  </wsdl:message>
+  <wsdl:message name="IFoundamental_SendMessageToClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageToClientResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFoundamental">
     <wsdl:operation name="GetAllPerson">
       <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/GetAllPerson" message="tns:IFoundamental_GetAllPerson_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="GetPersonById">
       <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/GetPersonById" message="tns:IFoundamental_GetPersonById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/GetPersonByIdResponse" message="tns:IFoundamental_GetPersonById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFoundamental/SendMessageToClient" message="tns:IFoundamental_SendMessageToClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFoundamental/SendMessageToClientResponse" message="tns:IFoundamental_SendMessageToClient_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFoundamental" type="tns:IFoundamental">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPersonById">
       <soap:operation soapAction="http://tempuri.org/IFoundamental/GetPersonById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessageToClient">
+      <soap:operation soapAction="http://tempuri.org/IFoundamental/SendMessageToClient" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
