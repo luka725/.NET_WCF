@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAdapter", "DataAdapter\DataAdapter.csproj", "{D2D36847-BFB2-4D06-8B5F-81DF14853EB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientHandler", "ClientHandler\ClientHandler.csproj", "{F17C9A27-69EB-4542-A1F4-469B2E401E1B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E0F0AB57-97F7-46DC-9BEA-F199E48FC964} = {E0F0AB57-97F7-46DC-9BEA-F199E48FC964}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

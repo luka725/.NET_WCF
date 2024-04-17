@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.Text;
 
 namespace DataProvider
 {
-    public class Service1 : IService1
+    public class ReciepeService : IReciepeService
     {
-        public List<Recipe> GetData()
+        public List<Recipe> GetAllReciepe()
         {
             List<Recipe> allRecipes;
             using (var context = new ReciepeDB())

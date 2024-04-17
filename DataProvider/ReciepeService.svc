@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="DataProvider.ReciepeService" CodeBehind="ReciepeService.svc.cs" %>

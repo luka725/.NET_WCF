@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="33a6e120-85c2-43d6-991e-7341dfbfb6fa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:60221/ReciepeService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ReciepeService.xsd" MetadataType="Schema" ID="1bff9375-33b3-4a22-93f5-86cbe15aa2ab" SourceId="1" SourceUrl="http://localhost:60221/ReciepeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ReciepeService1.xsd" MetadataType="Schema" ID="275f6212-8e41-4f87-9d2a-868f576f4b12" SourceId="1" SourceUrl="http://localhost:60221/ReciepeService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ReciepeService.disco" MetadataType="Disco" ID="f3144a84-d847-449c-b3b6-1d77efe53629" SourceId="1" SourceUrl="http://localhost:60221/ReciepeService.svc?disco" />
+    <MetadataFile FileName="ReciepeService2.xsd" MetadataType="Schema" ID="ab97ea4d-77a5-4500-b275-86e2ed1ee5ab" SourceId="1" SourceUrl="http://localhost:60221/ReciepeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ReciepeService.wsdl" MetadataType="Wsdl" ID="70f818b0-fe67-481e-8dd7-f65bf69bca4f" SourceId="1" SourceUrl="http://localhost:60221/ReciepeService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
